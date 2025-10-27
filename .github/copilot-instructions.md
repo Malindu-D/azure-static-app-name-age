@@ -48,6 +48,7 @@ This app deploys to Azure Static Web Apps. The `staticwebapp.config.json` handle
 3. **Theme**: Light blue (`#4299e1`) as primary accent, purple-blue gradient background
 4. **Form Validation**: Native HTML5 validation with visual feedback via border colors
 5. **Error Handling**: Show user-friendly messages in the `.message` div with success/error classes
+6. **API Configuration Check**: Test button and form submission verify API endpoint is configured (not placeholder)
 
 ## Configuration Points
 

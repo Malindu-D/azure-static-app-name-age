@@ -143,10 +143,15 @@ When Azure Static Web Apps builds your app:
 After deploying with environment variables:
 
 1. Open your Static Web App URL
-2. Open browser DevTools (F12)
-3. Go to Console
-4. Type: `window.API_CONFIG`
-5. You should see: `{endpoint: "https://your-app-service.azurewebsites.net/api/user"}`
+2. Click the **"Test API Connection"** button
+   - If configured correctly: Button turns **green** ✅
+   - If not configured: Button turns **red** with warning ⚠️
+3. Alternatively, open browser DevTools (F12)
+4. Go to Console
+5. Type: `window.API_CONFIG`
+6. You should see: `{endpoint: "https://your-app-service.azurewebsites.net/api/user"}`
+
+**Note:** The app will **not** allow form submission or API testing if the endpoint is still set to the default placeholder value. You must configure the `API_ENDPOINT` environment variable first.
 
 ## 🛡️ Security Best Practices
 

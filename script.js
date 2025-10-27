@@ -5,6 +5,17 @@ const API_ENDPOINT =
   window.API_CONFIG?.endpoint ||
   "https://your-app-service.azurewebsites.net/api/user";
 
+// Check if API endpoint is configured (not a placeholder)
+const isAPIConfigured = () => {
+  const endpoint = window.API_CONFIG?.endpoint;
+  // Check if endpoint exists and is not a placeholder value
+  return (
+    endpoint &&
+    endpoint !== "#{API_ENDPOINT}#" &&
+    !endpoint.includes("your-app-service.azurewebsites.net")
+  );
+};
+
 // Get form elements
 const form = document.getElementById("userForm");
 const nameInput = document.getElementById("name");
@@ -14,6 +25,25 @@ const testConnectionBtn = document.getElementById("testConnectionBtn");
 
 // Test API connection
 testConnectionBtn.addEventListener("click", async () => {
+  // Check if API is configured
+  if (!isAPIConfigured()) {
+    testConnectionBtn.classList.add("error");
+    testConnectionBtn.innerHTML =
+      '<span class="btn-text">✗ Not Configured</span><span class="btn-icon">⚠️</span>';
+    showMessage(
+      "error",
+      "⚠️ API endpoint not configured. Please set the API_ENDPOINT environment variable in Azure Static Web Apps settings."
+    );
+
+    // Reset button after 3 seconds
+    setTimeout(() => {
+      testConnectionBtn.classList.remove("error");
+      testConnectionBtn.innerHTML =
+        '<span class="btn-text">Test API Connection</span><span class="btn-icon">🔌</span>';
+    }, 3000);
+    return;
+  }
+
   const originalBtnText = testConnectionBtn.innerHTML;
   testConnectionBtn.disabled = true;
   testConnectionBtn.innerHTML =
@@ -83,6 +113,15 @@ testConnectionBtn.addEventListener("click", async () => {
 // Handle form submission
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // Check if API is configured before submitting
+  if (!isAPIConfigured()) {
+    showMessage(
+      "error",
+      "⚠️ Cannot submit: API endpoint not configured. Please set the API_ENDPOINT environment variable in Azure Static Web Apps settings."
+    );
+    return;
+  }
 
   // Get form data
   const userData = {
