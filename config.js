@@ -1,5 +1,6 @@
-// This file will be generated during Azure Static Web Apps build process
-// Environment variables will be injected here
+// Configuration for Azure Static Web Apps
+// The environment variable will be available at runtime
+// For now, set it directly for testing, then use Azure configuration
 window.API_CONFIG = {
-  endpoint: "#{API_ENDPOINT}#",
+  endpoint: "https://test-api-service-app-bhfwatgyakeghtdr.southeastasia-01.azurewebsites.net/api/UserData"
 };
