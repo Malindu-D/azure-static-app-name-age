@@ -124,6 +124,8 @@ Update the `showMessage()` calls in `script.js` fetch handlers
 - [ ] Form resets after successful submission
 - [ ] Responsive design works on mobile screens
 - [ ] Button shows loading state during submission
+- [ ] Test Connection button works and changes color (green=success, red=failed)
+- [ ] Test Connection button automatically resets after 3 seconds
 
 ## Avoid
 

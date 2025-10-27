@@ -8,6 +8,7 @@ A simple, colorful static web application with a light blue theme that collects 
 - Responsive design that works on all devices
 - Form validation with visual feedback
 - Animated transitions and hover effects
+- **Test Connection button** - Verify API connectivity before submitting (turns green/red)
 - Sends data to Azure App Service backend via REST API
 
 ## 🚀 Deployment to Azure Static Web Apps
